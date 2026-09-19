@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D карта — Қазақстанның тарихи-тілдік картасы</title>
+<meta name="description" content="Қазақстанның жеті өңірінің нақты әкімшілік шекаралары бойынша интерактивті карта — облысты таңдап, тарихи-тілдік мәліметпен танысыңыз.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="map">
+<a href="#main" class="skip-link">Негізгі мазмұнға өту</a>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Тарихи-тілдік карта</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Мәзірді ашу">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <nav id="navLinks" class="links" aria-label="Негізгі мәзір">
+      <a href="index.html#hero" data-nav>Басты бет</a>
+      <a href="index.html#about" data-nav>Жоба туралы</a>
+      <a href="map.html" data-nav class="active">3D карта</a>
+      <a href="periods.html#periods" data-nav>Тарихи кезеңдер</a>
+      <a href="compare.html#compare" data-nav>Өңірлерді салыстыру</a>
+      <a href="method.html" data-nav>Зерттеу әдісі</a>
+      <a href="quiz.html" data-nav>Өзіңді тексер</a>
+      <a href="results.html#results" data-nav>Зерттеу нәтижесі</a>
+      <a href="results.html#sources" data-nav>Дереккөздер</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="wrap page-header">
+    <div class="breadcrumb"><a href="index.html">Басты бет</a> / 3D карта</div>
+  </div>
+
+  <!-- MAP -->
+  <section id="map" style="background:var(--paper-2);padding-top:20px">
+    <div class="wrap reveal">
+      <div class="section-head">
+        <div class="section-tag">Интерактивті карта</div>
+        <h2>Жеті өңір: таңдап, тарихи-тілдік мәліметпен танысыңыз</h2>
+        <p>Облысты таңдаңыз немесе картаны айналдырыңыз. Тарихи кезеңді ауыстырғанда картадағы белгілер жаңарады. Картаны толық экранда қарау үшін құралдар тақтасындағы «Толық экран» түймесін басыңыз.</p>
+      </div>
+      <div class="map-note">Карта негізі — нақты әкімшілік шекара деректері (OpenStreetMap негізінде, Highcharts Maps Collection арқылы, 2022 жылғы облыстық реформадан кейінгі құрам: Абай, Жетісу, Ұлытау облыстарымен қоса). Карта тегін, коммерциялық емес оқу жобасы ретінде пайдаланылып отыр; басқа мақсатта қолдану алдында тиісті карта лицензиясын тексеріңіз.</div>
+
+      <div class="map-layout" id="mapFullscreenTarget">
+        <div>
+          <div class="map-stage">
+            <div class="map-toolbar">
+              <div class="periods-mini" id="periodMini" style="font-size:12.5px;color:#5b6a7a;font-weight:700"></div>
+              <div class="tools">
+                <button class="tool-btn" id="rotL" title="Солға айналдыру" aria-label="Картаны солға айналдыру">↺</button>
+                <button class="tool-btn" id="rotR" title="Оңға айналдыру" aria-label="Картаны оңға айналдыру">↻</button>
+                <button class="tool-btn" id="zoomIn" title="Жақындату" aria-label="Жақындату">+</button>
+                <button class="tool-btn" id="zoomOut" title="Алыстату" aria-label="Алыстату">−</button>
+                <button class="tool-btn" id="resetMap" title="Бастапқы қалып" aria-label="Картаны бастапқы қалыпқа келтіру">⟲</button>
+                <button class="tool-btn" id="toggleLabels" title="Белгілерді қосу/өшіру" aria-label="Белгілерді қосу немесе өшіру">🏷</button>
+                <button class="tool-btn tool-wide" id="mapFullscreenBtn" title="Толық экран" aria-label="Картаны толық экранда ашу" aria-pressed="false">⛶ Толық экран</button>
+              </div>
+            </div>
+            <div id="kzsvg-wrap">
+              <svg id="kzsvg" viewBox="-10 -10 720 280" role="img" aria-labelledby="mapTitle mapDesc">
+                <title id="mapTitle">Қазақстанның әкімшілік облыстары картасы, жеті зерттелетін өңір ерекшеленген</title>
+                <desc id="mapDesc">Барлық облыстар мен республикалық маңызы бар қалалардың нақты шекаралары көрсетілген; Түркістан, Маңғыстау, Солтүстік Қазақстан, Шығыс Қазақстан, Абай, Қарағанды облыстары және Алматы қаласы түспен ерекшеленген.</desc>
+                <g id="oblastsLayer"></g>
+                <g id="regionsLayer"></g>
+              </svg>
+            </div>
+            <div class="map-credit">Карта деректері: Highcharts Maps Collection · © OpenStreetMap contributors</div>
+            <div class="legend" id="mapLegend"></div>
+            <div class="fs-exit-hint">Шығу үшін Esc пернесін басыңыз немесе «Толық экраннан шығу» түймесін қайта басыңыз.</div>
+          </div>
+        </div>
+
+        <aside class="region-panel" id="regionPanel" aria-live="polite">
+          <div class="card">
+            <div id="panelInner" class="rp-empty">Өңірді тізімнен немесе картадан таңдаңыз.</div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="page-flow">
+        <a class="flow-link prev" href="index.html">
+          <div class="fl-dir">← Алдыңғы</div>
+          <div class="fl-title">Жоба туралы</div>
+        </a>
+        <a class="flow-link next" href="periods.html">
+          <div class="fl-dir">Келесі →</div>
+          <div class="fl-title">Тарихи кезеңдер</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px">
+    <span>© Қазақстанның тарихи-тілдік картасы — 9-сынып зерттеу жобасы</span>
+    <span>Соңғы жаңарту: 2026</span>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="map-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

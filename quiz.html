@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Өзіңді тексер — Қазақстанның тарихи-тілдік картасы</title>
+<meta name="description" content="Сайтта берілген материал негізінде 10 сұрақтан тұратын білім тексеру тесті.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="quiz">
+<a href="#main" class="skip-link">Негізгі мазмұнға өту</a>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Тарихи-тілдік карта</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Мәзірді ашу">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <nav id="navLinks" class="links" aria-label="Негізгі мәзір">
+      <a href="index.html#hero" data-nav>Басты бет</a>
+      <a href="index.html#about" data-nav>Жоба туралы</a>
+      <a href="map.html" data-nav>3D карта</a>
+      <a href="periods.html#periods" data-nav>Тарихи кезеңдер</a>
+      <a href="compare.html#compare" data-nav>Өңірлерді салыстыру</a>
+      <a href="method.html" data-nav>Зерттеу әдісі</a>
+      <a href="quiz.html" data-nav class="active">Өзіңді тексер</a>
+      <a href="results.html#results" data-nav>Зерттеу нәтижесі</a>
+      <a href="results.html#sources" data-nav>Дереккөздер</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="wrap page-header">
+    <div class="breadcrumb"><a href="index.html">Басты бет</a> / Өзіңді тексер</div>
+  </div>
+
+  <!-- QUIZ -->
+  <section id="quiz" style="padding-top:20px">
+    <div class="wrap reveal">
+      <div class="section-head" style="margin:0 auto 30px;text-align:center">
+        <div class="section-tag">Өзіңді тексер</div>
+        <h2>Білімді тексеру тесті</h2>
+        <p style="margin-left:auto;margin-right:auto">10 сұрақ. Сайтта берілген материал негізінде.</p>
+      </div>
+      <div class="card quiz-card" id="quizCard"></div>
+
+      <div class="page-flow">
+        <a class="flow-link prev" href="method.html">
+          <div class="fl-dir">← Алдыңғы</div>
+          <div class="fl-title">Зерттеу әдісі</div>
+        </a>
+        <a class="flow-link next" href="results.html">
+          <div class="fl-dir">Келесі →</div>
+          <div class="fl-title">Зерттеу нәтижесі</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px">
+    <span>© Қазақстанның тарихи-тілдік картасы — 9-сынып зерттеу жобасы</span>
+    <span>Соңғы жаңарту: 2026</span>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="map-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
